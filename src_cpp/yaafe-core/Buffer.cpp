@@ -67,11 +67,6 @@ namespace YAAFE {
     delete [] data;
   }
 
-  DataBlock& DataBlock::operator=(const DataBlock& db)
-  {
-    // never called
-  }
-
   int DataBlock::s_preferedBlockSize(PREFERRED_DATABLOCK_SIZE);
 
   int DataBlock::preferedBlockSize() {

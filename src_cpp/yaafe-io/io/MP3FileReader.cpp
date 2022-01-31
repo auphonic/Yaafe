@@ -379,7 +379,7 @@ namespace YAAFE {
       while ( (r = m_decoder->decode()) ) {
         count += r;
         for (int i=0;i<r;i++) {
-          register double v = buf[i];
+          double v = buf[i];
           sum += v;
           if (v<min) min=v;
           if (v>max) max=v;

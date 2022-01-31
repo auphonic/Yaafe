@@ -164,7 +164,7 @@ namespace YAAFE
     }
 
     // create dataset
-    const hsize_t dims[] = { in.size };
+    const hsize_t dims[] = { static_cast<hsize_t>(in.size) };
     hid_t atype_id = H5Tarray_create2(H5T_NATIVE_DOUBLE,1, dims);
     size_t dataSize = H5Tget_size(atype_id);
     hsize_t chunk_size = 500000 / dataSize; // chunk size should not exceed 1MB. 500KB is a good tradeoff

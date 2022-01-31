@@ -121,7 +121,7 @@ namespace YAAFE
    private:
      DataBlock();
      DataBlock(const DataBlock& db);
-     DataBlock& operator=(const DataBlock& db);
+     DataBlock& operator=(const DataBlock& db) = delete;
 
      static int s_preferedBlockSize;
   };
