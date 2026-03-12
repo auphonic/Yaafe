@@ -89,10 +89,10 @@ class TemporalShapeStatistics(AudioFeature):
 
 class Energy(AudioFeature):
 
-    '''
+    r'''
     Compute energy as root mean square of an audio Frame.
 
-    .. math:: en = \sqrt\\frac{\sum_{i=0}^{N-1}x(i)^2}{N}
+    .. math:: en = \sqrt\frac{\sum_{i=0}^{N-1}x(i)^2}{N}
 
     '''
     COMPONENT_LIBS = ['yaafe-components']
@@ -131,12 +131,12 @@ class MagnitudeSpectrum(AudioFeature):
 
 class SpectralVariation(AudioFeature):
 
-    '''
+    r'''
     SpectralVariation is the normalized correlation of
     :class:`spectrum <MagnitudeSpectrum>` between consecutive frames.
     (see [GP2004]_)
 
-    .. math:: S_{var} = 1 - \\frac{\sum_{k}a_{k}(t-1)a_{k}(t)}
+    .. math:: S_{var} = 1 - \frac{\sum_{k}a_{k}(t-1)a_{k}(t)}
                                   {\sqrt{\sum_{k}a_{k}(t-1)^2}
                                   \sqrt{\sum_{k}a_{k}(t)^2}}
 
@@ -157,11 +157,11 @@ class SpectralVariation(AudioFeature):
 
 class SpectralSlope(AudioFeature):
 
-    '''
+    r'''
     SpectralSlope is computed by linear regression of the spectral amplitude.
     (see [GP2004]_)
 
-    .. math:: S_{slope} = \\frac{K\sum_{k}f_{k}a_{k}
+    .. math:: S_{slope} = \frac{K\sum_{k}f_{k}a_{k}
                                  -\sum_{k}f_{k}\sum_{k}a_{k}}
                                 {K\sum_{k}f_{k}^2-(\sum_{k}a_{k})^2}
     '''
@@ -203,7 +203,7 @@ class SpectralRolloff(AudioFeature):
 
 class SpectralShapeStatistics(AudioFeature):
 
-    '''
+    r'''
     Compute shape statistics of :class:`MagnitudeSpectrum`, (see [GR2004]_).
 
     .. _shapestatistics:
@@ -213,13 +213,13 @@ class SpectralShapeStatistics(AudioFeature):
 
     .. math::
 
-        \mu_{i} &= \\frac{\sum_{n=1}^{N}f_{k}^{i}*a_{k}}
-                         {\sum_{n=1}^{N}a_{k}}\\\\
-        centroid &= \mu_{1}\\\\
-        spread &= \sqrt{\mu_{2}-\mu_{1}^{2}} \\\\
-        skewness &= \\frac{2\mu_{1}^{3} - 3\mu_{1}\mu_{2} + \mu_{3}}
-                          {spread^{3}} \\\\
-        kurtosis &= \\frac{-3\mu_{1}^{4} + 6\mu_{1}\mu_{2} - 4\mu_{1}\mu_{3}
+        \mu_{i} &= \frac{\sum_{n=1}^{N}f_{k}^{i}*a_{k}}
+                         {\sum_{n=1}^{N}a_{k}}\\
+        centroid &= \mu_{1}\\
+        spread &= \sqrt{\mu_{2}-\mu_{1}^{2}} \\
+        skewness &= \frac{2\mu_{1}^{3} - 3\mu_{1}\mu_{2} + \mu_{3}}
+                          {spread^{3}} \\
+        kurtosis &= \frac{-3\mu_{1}^{4} + 6\mu_{1}\mu_{2} - 4\mu_{1}\mu_{3}
                            + \mu_{4}}{spread^{4}} - 3
 
     .. [GR2004] O.Gillet, G.Richard, *Automatic transcription of drum loops.*
@@ -241,11 +241,11 @@ class SpectralShapeStatistics(AudioFeature):
 
 class SpectralFlux(AudioFeature):
 
-    '''
+    r'''
     Compute flux of :class:`spectrum <MagnitudeSpectrum>` between consecutives
     frames.
 
-    .. math:: S_{flux} = \\frac{\sum_{k}(a_{k}(t) - a_{k}(t-1))^2}
+    .. math:: S_{flux} = \frac{\sum_{k}(a_{k}(t) - a_{k}(t-1))^2}
                                {\sqrt{\sum_{k}a_{k}(t-1)^2}
                                 \sqrt{\sum_{k}a_{k}(t)^2}}
 
@@ -265,12 +265,12 @@ class SpectralFlux(AudioFeature):
 
 class SpectralFlatness(AudioFeature):
 
-    '''
+    r'''
     Compute global spectral flatness using the ratio between geometric and
     arithmetic mean.
 
-    .. math:: S_{flatness} = \\frac{exp(\\frac{1}{N}\sum_{k}log(a_{k}))}
-                                   {\\frac{1}{N}\sum_{k}a_{k}}
+    .. math:: S_{flatness} = \frac{exp(\frac{1}{N}\sum_{k}log(a_{k}))}
+                                   {\frac{1}{N}\sum_{k}a_{k}}
     '''
     COMPONENT_LIBS = ['yaafe-components']
     PARAMS = [(MagnitudeSpectrum, {}),
@@ -286,11 +286,11 @@ class SpectralFlatness(AudioFeature):
 
 class SpectralDecrease(AudioFeature):
 
-    '''
+    r'''
     Compute spectral decrease accoding to [GP2004]_.
 
-    .. math:: S_{decrease} = \\frac{1}{\sum_{k=2}^{K}a_{k}}
-                              \sum_{k=2}^{K}\\frac{a_{k}-a_{1}}{k-1}
+    .. math:: S_{decrease} = \frac{1}{\sum_{k=2}^{K}a_{k}}
+                              \sum_{k=2}^{K}\frac{a_{k}-a_{1}}{k-1}
     '''
     COMPONENT_LIBS = ['yaafe-components']
     PARAMS = [(MagnitudeSpectrum, {}),
@@ -345,7 +345,7 @@ class SpectralCrestFactorPerBand(AudioFeature):
 
 class AutoCorrelation(AudioFeature):
 
-    """
+    r"""
     Compute autocorrelation coefficients *ac* on each frames.
 
     .. math:: ac(k) = \sum_{i=0}^{N-k-1}x(i)x(i+k)
@@ -462,7 +462,7 @@ class ComplexDomainOnsetDetection(AudioFeature):
 
 class Cepstrum(AudioFeature):
 
-    '''
+    r'''
     Feature transform that compute cepstrum coefficients of input feature
     frames.  (use DCT II)
 
@@ -482,13 +482,13 @@ class Cepstrum(AudioFeature):
 
 class MelSpectrum(AudioFeature):
 
-    '''
+    r'''
     Compute the Mel-frequencies spectrum [DM1980]_.
 
     Mel filter bank is built as 40 log-spaced filters according to the
     following mel-scale:
 
-    .. math:: melfreq = 1127 * log(1 + \\frac{freq}{700})
+    .. math:: melfreq = 1127 * log(1 + \frac{freq}{700})
 
     Each filter is a triangular filter with height :math:`2/(f_{max}-f_{min})`.
 
@@ -508,13 +508,13 @@ class MelSpectrum(AudioFeature):
 
 class MFCC(AudioFeature):
 
-    '''
+    r'''
     Compute the Mel-frequencies cepstrum coefficients [DM1980]_.
 
     Mel filter bank is built as 40 log-spaced filters according to
     the following mel-scale:
 
-    .. math:: melfreq = 1127 * log(1 + \\frac{freq}{700})
+    .. math:: melfreq = 1127 * log(1 + \frac{freq}{700})
 
     Each filter is a triangular filter with height :math:`2/(f_{max}-f_{min})`.
     Then MFCCs are computed as following, using DCT II:
@@ -545,14 +545,14 @@ class MFCC(AudioFeature):
 
 class Derivate(AudioFeature):
 
-    '''
+    r'''
     Compute temporal derivative of input feature. The derivative is
     approximated by an orthogonal polynomial fit over a finite length
     window. (see [RR1993]_ p.117).
 
     .. math::
 
-        \\frac{\partial x(t)}{\partial t} = \mu \sum_{k=-N}^{N}k.x(t+k)
+        \frac{\partial x(t)}{\partial t} = \mu \sum_{k=-N}^{N}k.x(t+k)
 
         where \: \mu = \sum_{k=-N}^{N}k^2
 
